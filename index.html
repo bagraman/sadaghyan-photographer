@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Фотограф | Свадьбы и События</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Видео-фон -->
+    <div class="video-background">
+      <!-- poster - картинка, пока видео грузится. video - само видео -->
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="assets/poster.jpg"
+        class="bg-video"
+        preload="metadata"
+      >
+        <source src="assets/background.mp4" type="video/mp4" />
+        <source src="assets/background.webm" type="video/webm" />
+      </video>
+      <!-- Затемнение поверх видео, чтобы текст читался -->
+      <div class="video-overlay"></div>
+    </div>
+    <!-- Шапка -->
+    <header class="header">
+      <div class="logo">SADAGHYANPHOTO</div>
+      <button id="lang-toggle" class="lang-btn">AM</button>
+    </header>
+    <!-- Главный экран (Hero) -->
+    <section class="hero">
+      <div class="container">
+        <h1 data-i18n="hero_title">Сохраню ваши яркие воспоминания</h1>
+        <p data-i18n="hero_subtitle">
+          Свадьбы • Крещение • Семейные • Фотосессии
+        </p>
+        <a href="#portfolio" class="btn" data-i18n="cta_btn">Смотреть работы</a>
+      </div>
+    </section>
+    <!-- Портфолио с фильтром -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <h2 data-i18n="portfolio_title">Портфолио</h2>
+        <!--Кнопки фильтра-->
+        <div class="filter-buttons">
+          <button class="active" data-filter="all" data-i18n="filter_all">
+            Все
+          </button>
+          <button data-filter="wedding" data-i18n="filter_wedding">
+            Свадьбы
+          </button>
+          <button data-filter="baptism" data-i18n="filter_baptism">
+            Крещение
+          </button>
+          <button data-filter="family" data-i18n="filter_family">
+            Семейные
+          </button>
+          <button data-filter="street" data-i18n="filter_street">Улица</button>
+        </div>
+        <!--Сетка фото (Пример структуры)-->
+        <div class="portfolio-grid">
+          <!-- Свадьба (6) -->
+          <div class="photo-item" data-category="wedding">
+            <img src="assets/wedding-1.webp" alt="Свадебная фотосессия" />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img src="assets/wedding-2.webp" alt="Свадебная фотосессия" />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-3.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="baptism">
+            <img
+              src="assets/baptism-1.webp"
+              alt="Таинство крещения"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="baptism">
+            <img
+              src="assets/baptism-2.webp"
+              alt="Таинство крещения"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="baptism">
+            <img
+              src="assets/baptism-3.webp"
+              alt="Таинство крещения"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="baptism">
+            <img
+              src="assets/baptism-4.webp"
+              alt="Таинство крещения"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-4.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-5.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-6.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Беременные (4) -->
+          <div class="photo-item" data-category="family">
+            <img
+              src="assets/maternity-1.webp"
+              alt="Семейная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="family">
+            <img
+              src="assets/maternity-2.webp"
+              alt="Семейная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="family">
+            <img
+              src="assets/maternity-3.webp"
+              alt="Семейная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="family">
+            <img
+              src="assets/maternity-4.webp"
+              alt="Семейная фотосессия"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Фотосессии (5) -->
+          <div class="photo-item" data-category="photoshoots">
+            <img
+              src="assets/photoshoots-1.webp"
+              alt="Индивидуальная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="photoshoots">
+            <img
+              src="assets/photoshoots-2.webp"
+              alt="Индивидуальная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="photoshoots">
+            <img
+              src="assets/photoshoots-3.webp"
+              alt="Индивидуальная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="photoshoots">
+            <img
+              src="assets/photoshoots-4.webp"
+              alt="Индивидуальная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="photoshoots">
+            <img
+              src="assets/photoshoots-5.webp"
+              alt="Индивидуальная фотосессия"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Улицы (4) -->
+          <div class="photo-item" data-category="street">
+            <img
+              src="assets/street-1.webp"
+              alt="Уличная фотография"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="street">
+            <img
+              src="assets/street-2.webp"
+              alt="Уличная фотография"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="street">
+            <img
+              src="assets/street-3.webp"
+              alt="Уличная фотография"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="street">
+            <img
+              src="assets/street-4.webp"
+              alt="Уличная фотография"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Контакты-->
+    <section class="contacts">
+      <div class="container">
+        <h2 data-i18n="contact_title">Связаться со мной</h2>
+        <div class="social-links">
+          <!-- WhatsApp -->
+          <a
+            href="https://wa.me/37491209003"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.153 1.598 5.95L.052 23.75l6.01-1.575A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0Zm5.89 16.83c-.24.67-1.41 1.28-1.95 1.36-.52.08-1.01.23-3.4-1.17-2.89-1.7-4.72-4.56-4.86-4.75-.14-.19-1.14-1.52-1.14-2.9s.72-2.06.98-2.34c.26-.28.56-.35.75-.35.19 0 .37 0 .53.01.19.01.44-.07.69.53.26.63.88 2.17.96 2.33.08.16.13.35.02.56-.11.21-.16.35-.33.53-.17.19-.35.39-.5.53-.17.16-.34.33-.15.66.19.33.86 1.42 1.85 2.3 1.27 1.13 2.34 1.48 2.67 1.64.33.16.52.13.71-.08.19-.21.81-.94 1.02-1.27.21-.33.42-.27.71-.16.29.11 1.84.87 2.16 1.03.33.16.54.24.62.38.08.14.08.81-.16 1.48Z"
+              />
+            </svg>
+            WhatsApp
+          </a>
+
+          <!-- Telegram -->
+          <a
+            href="https://t.me/sadaghyanphoto"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0Zm5.53 8.15-7.5 7.5c-.2.2-.5.2-.7 0L5.53 11.85c-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0l3.25 3.25 6.75-6.75c.2-.2.5-.2.7 0 .2.2.2.5 0 .7Z"
+              />
+            </svg>
+            Telegram
+          </a>
+
+          <!-- Instagram -->
+          <a
+            href="https://instagram.com/sadaghyanphoto"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.9 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.78 2.7 21.35.27 17 .07 15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.41-11.41a1.44 1.44 0 1 0 0-2.88 1.44 1.44 0 0 0 0 2.88Z"
+              />
+            </svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Photographer. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <div id="lightbox" class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Полноразмерное фото" />
+        <a class="lightbox-prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="lightbox-next" onclick="changeImage(1)">&#10095;</a>
+      </div>
+    </div>
+  </body>
+</html>
