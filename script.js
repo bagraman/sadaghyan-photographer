@@ -2,26 +2,31 @@
 const translations = {
   ru: {
     hero_title: "Сохраню ваши яркие воспоминания",
-    hero_subtitle: "Свадьбы • Крещение • Семейные • Фотосессии",
+    hero_subtitle: "Свадьбы • Крещение • Мероприятия • Семейные • Фотосессии",
     cta_btn: "Смотреть работы",
     portfolio_title: "Портфолио",
     filter_all: "Все",
+    show_more: "Показать еще",
     filter_wedding: "Свадьбы",
     filter_baptism: "Крещение",
+    filter_events: "Мероприятия",
     filter_family: "Семейные",
-    filter_street: "Фотосессии",
+    filter_photoshoots: "Фотосессии",
     contact_title: "Связаться со мной",
   },
   am: {
     hero_title: "Ես կպահեմ Ձեր վառ հիշողությունները",
-    hero_subtitle: "Հարսանիքներ • Մկրտություն • նտանեկան • ֆոտոսեսիաներ",
+    hero_subtitle:
+      "Հարսանիքներ • Մկրտություն • Միջոցառումներ • նտանեկան • ֆոտոսեսիաներ",
     cta_btn: "Դիտել աշխատանքները",
     portfolio_title: "Պորտֆոլիո",
     filter_all: "Բոլորը",
+    show_more: "ցույց տալ ավելին",
     filter_wedding: "Հարսանիքներ",
     filter_baptism: "Մկրտություն",
+    filter_events: "Միջոցառումներ",
     filter_family: "Ընտանեկան",
-    filter_street: "ֆոտոսեսիաներ",
+    filter_photoshoots: "ֆոտոսեսիաներ",
     contact_title: "Կապվել ին հետ",
   },
 };
@@ -146,4 +151,86 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   console.log("✅ Lightbox инициализирован"); // Для проверки в консоли
+});
+
+// === ПОРТФОЛИО С ДИАГНОСТИКОЙ ===
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(' Скрипт портфолио запущен');
+    
+    const showMoreOverlay = document.getElementById('show-more-overlay');
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const hideBtnContainer = document.getElementById('hide-btn-container');
+    const hideBtn = document.getElementById('hide-btn');
+    const allItems = Array.from(document.querySelectorAll('.photo-item'));
+    
+    console.log('📸 Найдено фото:', allItems.length);
+    console.log('🔘 Кнопка "Показать ещё":', showMoreBtn);
+    console.log('🔘 Кнопка "Скрыть":', hideBtn);
+    
+    if (!showMoreBtn || !hideBtn) {
+        console.error('❌ Кнопки не найдены! Проверь HTML');
+        return;
+    }
+
+    const INITIAL_CLEAR = 9;
+    const FADE_COUNT = 3;
+
+    function applyInitialState() {
+        console.log('🔄 Применяем начальное состояние');
+        
+        // Сброс
+        allItems.forEach(item => {
+            item.classList.remove('faded', 'hidden-photos');
+        });
+
+        const visible = allItems.filter(i => !i.classList.contains('hidden'));
+        console.log('️ Видимых фото (не скрытых фильтром):', visible.length);
+        
+        if (visible.length <= INITIAL_CLEAR) {
+            console.log('⚠️ Фото меньше 9, прячем оверлей');
+            showMoreOverlay.style.display = 'none';
+            return;
+        }
+
+        // Размываем 10-12
+        for (let i = INITIAL_CLEAR; i < INITIAL_CLEAR + FADE_COUNT && i < visible.length; i++) {
+            visible[i].classList.add('faded');
+            console.log('️ Размыто фото #' + i);
+        }
+        
+        // Скрываем 13+
+        for (let i = INITIAL_CLEAR + FADE_COUNT; i < visible.length; i++) {
+            visible[i].classList.add('hidden-photos');
+            console.log('🙈 Скрыто фото #' + i);
+        }
+
+        showMoreOverlay.style.display = 'flex';
+        hideBtnContainer.style.display = 'none';
+        console.log('✅ Начальное состояние применено');
+    }
+
+    // Клик "Показать еще"
+    showMoreBtn.addEventListener('click', () => {
+        console.log('👆 Клик "Показать ещё"');
+        allItems.forEach(item => item.classList.remove('faded', 'hidden-photos'));
+        showMoreOverlay.style.display = 'none';
+        hideBtnContainer.style.display = 'block';
+    });
+
+    // Клик "Скрыть"
+    hideBtn.addEventListener('click', () => {
+        console.log('👆 Клик "Скрыть"');
+        applyInitialState();
+        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Фильтры
+    document.querySelectorAll('.filter-buttons button').forEach(filterBtn => {
+        filterBtn.addEventListener('click', () => {
+            console.log(' Клик по фильтру');
+            setTimeout(applyInitialState, 50);
+        });
+    });
+
+    applyInitialState();
 });

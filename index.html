@@ -59,10 +59,13 @@
           <button data-filter="baptism" data-i18n="filter_baptism">
             Крещение
           </button>
+          <button data-filter="events" data-i18n="filter_events">
+            Мероприятия
+          </button>
           <button data-filter="family" data-i18n="filter_family">
             Семейные
           </button>
-          <button data-filter="street" data-i18n="filter_street">
+          <button data-filter="photoshoots" data-i18n="filter_photoshoots">
             Фотосессии
           </button>
         </div>
@@ -110,6 +113,13 @@
               loading="lazy"
             />
           </div>
+          <div class="photo-item" data-category="baptism">
+            <img
+              src="assets/baptism-5.webp"
+              alt="Таинство крещения"
+              loading="lazy"
+            />
+          </div>
 
           <div class="photo-item" data-category="wedding">
             <img
@@ -136,28 +146,28 @@
           <!-- Беременные (4) -->
           <div class="photo-item" data-category="family">
             <img
-              src="assets/maternity-1.webp"
+              src="assets/family-1.webp"
               alt="Семейная фотосессия"
               loading="lazy"
             />
           </div>
           <div class="photo-item" data-category="family">
             <img
-              src="assets/maternity-2.webp"
+              src="assets/family-2.webp"
               alt="Семейная фотосессия"
               loading="lazy"
             />
           </div>
           <div class="photo-item" data-category="family">
             <img
-              src="assets/maternity-3.webp"
+              src="assets/family-3.webp"
               alt="Семейная фотосессия"
               loading="lazy"
             />
           </div>
           <div class="photo-item" data-category="family">
             <img
-              src="assets/maternity-4.webp"
+              src="assets/family-4.webp"
               alt="Семейная фотосессия"
               loading="lazy"
             />
@@ -199,35 +209,65 @@
               loading="lazy"
             />
           </div>
-
-          <!-- Улицы (4) -->
-          <div class="photo-item" data-category="street">
+          <div class="photo-item" data-category="photoshoots">
             <img
-              src="assets/street-1.webp"
-              alt="Уличная фотография"
+              src="assets/photoshoots-6.webp"
+              alt="Индивидуальная фотосессия"
               loading="lazy"
             />
           </div>
-          <div class="photo-item" data-category="street">
+          <div class="photo-item" data-category="photoshoots">
             <img
-              src="assets/street-2.webp"
-              alt="Уличная фотография"
+              src="assets/photoshoots-7.webp"
+              alt="Индивидуальная фотосессия"
               loading="lazy"
             />
           </div>
-          <div class="photo-item" data-category="street">
+          <div class="photo-item" data-category="photoshoots">
             <img
-              src="assets/street-3.webp"
-              alt="Уличная фотография"
+              src="assets/photoshoots-8.webp"
+              alt="Индивидуальная фотосессия"
               loading="lazy"
             />
           </div>
-          <div class="photo-item" data-category="street">
+          <div class="photo-item" data-category="photoshoots">
             <img
-              src="assets/street-4.webp"
-              alt="Уличная фотография"
+              src="assets/photoshoots-9.webp"
+              alt="Индивидуальная фотосессия"
               loading="lazy"
             />
+          </div>
+          <div class="photo-item" data-category="photoshoots">
+            <img
+              src="assets/photoshoots-10.webp"
+              alt="Индивидуальная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <!-- Мероприятия (4) -->
+          <div class="photo-item" data-category="events">
+            <img src="assets/events-1.webp" alt="Мероприятие" loading="lazy" />
+          </div>
+          <div class="photo-item" data-category="events">
+            <img src="assets/events-2.webp" alt="Мероприятие" loading="lazy" />
+          </div>
+          <div class="photo-item" data-category="events">
+            <img src="assets/events-3.webp" alt="Мероприятие" loading="lazy" />
+          </div>
+          <div class="photo-item" data-category="events">
+            <img src="assets/events-4.webp" alt="Мероприятие" loading="lazy" />
+          </div>
+          <div class="overlay-container" id="show-more-overlay">
+            <button class="btn toggle-btn" id="show-more-btn">
+              Показать еще
+            </button>
+          </div>
+          <div
+            class="hide-btn-container"
+            id="hide-btn-container"
+            style="display: none"
+          >
+            <button class="btn hide-btn" id="hide-btn">Скрыть</button>
           </div>
         </div>
       </div>
