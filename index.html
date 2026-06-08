@@ -11,39 +11,27 @@
     />
   </head>
   <body>
-    <!-- Видео-фон -->
-    <div class="video-background">
-      <!-- poster - картинка, пока видео грузится. video - само видео -->
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        poster="assets/poster.jpg"
-        class="bg-video"
-        preload="metadata"
-      >
-        <source src="assets/background.mp4" type="video/mp4" />
-        <source src="assets/background.webm" type="video/webm" />
-      </video>
-      <!-- Затемнение поверх видео, чтобы текст читался -->
-      <div class="video-overlay"></div>
-    </div>
+    <!-- Hero-секция с фото-фоном -->
+    <section id="home" class="hero">
+      <div class="hero-background">
+        <img src="assets/hero-bg.webp" alt="Фон" class="hero-bg-image" />
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-content container">
+        <h1 data-i18n="hero_title">Сохраню ваши яркие воспоминания</h1>
+        <p data-i18n="hero_subtitle">
+          Свадьбы • Крещение • Мероприятия • Семейные • Фотосессии
+        </p>
+        <a href="#portfolio" class="btn" data-i18n="cta_btn">Смотреть работы</a>
+      </div>
+    </section>
+
     <!-- Шапка -->
     <header class="header">
       <div class="logo">SADAGHYANPHOTO</div>
       <button id="lang-toggle" class="lang-btn">AM</button>
     </header>
-    <!-- Главный экран (Hero) -->
-    <section class="hero">
-      <div class="container">
-        <h1 data-i18n="hero_title">Сохраню ваши яркие воспоминания</h1>
-        <p data-i18n="hero_subtitle">
-          Свадьбы • Крещение • Семейные • Фотосессии
-        </p>
-        <a href="#portfolio" class="btn" data-i18n="cta_btn">Смотреть работы</a>
-      </div>
-    </section>
     <!-- Портфолио с фильтром -->
     <section id="portfolio" class="portfolio">
       <div class="container">
@@ -138,6 +126,55 @@
           <div class="photo-item" data-category="wedding">
             <img
               src="assets/wedding-6.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-7.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-8.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-9.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-10.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-11.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-12.webp"
+              alt="Свадебная фотосессия"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-item" data-category="wedding">
+            <img
+              src="assets/wedding-13.webp"
               alt="Свадебная фотосессия"
               loading="lazy"
             />

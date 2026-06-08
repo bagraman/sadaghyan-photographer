@@ -153,84 +153,79 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ Lightbox инициализирован"); // Для проверки в консоли
 });
 
-// === ПОРТФОЛИО С ДИАГНОСТИКОЙ ===
-document.addEventListener('DOMContentLoaded', () => {
-    console.log(' Скрипт портфолио запущен');
-    
-    const showMoreOverlay = document.getElementById('show-more-overlay');
-    const showMoreBtn = document.getElementById('show-more-btn');
-    const hideBtnContainer = document.getElementById('hide-btn-container');
-    const hideBtn = document.getElementById('hide-btn');
-    const allItems = Array.from(document.querySelectorAll('.photo-item'));
-    
-    console.log('📸 Найдено фото:', allItems.length);
-    console.log('🔘 Кнопка "Показать ещё":', showMoreBtn);
-    console.log('🔘 Кнопка "Скрыть":', hideBtn);
-    
-    if (!showMoreBtn || !hideBtn) {
-        console.error('❌ Кнопки не найдены! Проверь HTML');
-        return;
+// === ИСПРАВЛЕННОЕ ПОРТФОЛИО: УМНАЯ КНОПКА ДЛЯ КАЖДОЙ КАТЕГОРИИ ===
+document.addEventListener("DOMContentLoaded", () => {
+  const showMoreOverlay = document.getElementById("show-more-overlay");
+  const showMoreBtn = document.getElementById("show-more-btn");
+  const hideBtnContainer = document.getElementById("hide-btn-container");
+  const hideBtn = document.getElementById("hide-btn");
+  const allItems = Array.from(document.querySelectorAll(".photo-item"));
+
+  const INITIAL_CLEAR = 6;
+  const FADE_COUNT = 3;
+
+  function applyInitialState() {
+    // Полный сброс всех классов
+    allItems.forEach((item) => {
+      item.classList.remove("faded", "hidden-photos");
+    });
+
+    // Берём только видимые (не скрытые фильтром)
+    const visible = allItems.filter((i) => !i.classList.contains("hidden"));
+
+    // Если фото <= 9, прячем оверлей и кнопку "Скрыть"
+    if (visible.length <= INITIAL_CLEAR) {
+      showMoreOverlay.style.display = "none";
+      hideBtnContainer.style.display = "none";
+      return;
     }
 
-    const INITIAL_CLEAR = 9;
-    const FADE_COUNT = 3;
-
-    function applyInitialState() {
-        console.log('🔄 Применяем начальное состояние');
-        
-        // Сброс
-        allItems.forEach(item => {
-            item.classList.remove('faded', 'hidden-photos');
-        });
-
-        const visible = allItems.filter(i => !i.classList.contains('hidden'));
-        console.log('️ Видимых фото (не скрытых фильтром):', visible.length);
-        
-        if (visible.length <= INITIAL_CLEAR) {
-            console.log('⚠️ Фото меньше 9, прячем оверлей');
-            showMoreOverlay.style.display = 'none';
-            return;
-        }
-
-        // Размываем 10-12
-        for (let i = INITIAL_CLEAR; i < INITIAL_CLEAR + FADE_COUNT && i < visible.length; i++) {
-            visible[i].classList.add('faded');
-            console.log('️ Размыто фото #' + i);
-        }
-        
-        // Скрываем 13+
-        for (let i = INITIAL_CLEAR + FADE_COUNT; i < visible.length; i++) {
-            visible[i].classList.add('hidden-photos');
-            console.log('🙈 Скрыто фото #' + i);
-        }
-
-        showMoreOverlay.style.display = 'flex';
-        hideBtnContainer.style.display = 'none';
-        console.log('✅ Начальное состояние применено');
+    // Размываем 10-12
+    for (
+      let i = INITIAL_CLEAR;
+      i < INITIAL_CLEAR + FADE_COUNT && i < visible.length;
+      i++
+    ) {
+      visible[i].classList.add("faded");
     }
 
-    // Клик "Показать еще"
-    showMoreBtn.addEventListener('click', () => {
-        console.log('👆 Клик "Показать ещё"');
-        allItems.forEach(item => item.classList.remove('faded', 'hidden-photos'));
-        showMoreOverlay.style.display = 'none';
-        hideBtnContainer.style.display = 'block';
-    });
+    // Скрываем 13+
+    for (let i = INITIAL_CLEAR + FADE_COUNT; i < visible.length; i++) {
+      visible[i].classList.add("hidden-photos");
+    }
 
-    // Клик "Скрыть"
-    hideBtn.addEventListener('click', () => {
-        console.log('👆 Клик "Скрыть"');
-        applyInitialState();
-        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    showMoreOverlay.style.display = "flex";
+    hideBtnContainer.style.display = "none";
+  }
 
-    // Фильтры
-    document.querySelectorAll('.filter-buttons button').forEach(filterBtn => {
-        filterBtn.addEventListener('click', () => {
-            console.log(' Клик по фильтру');
-            setTimeout(applyInitialState, 50);
-        });
-    });
+  // Клик "Показать еще"
+  showMoreBtn.addEventListener("click", () => {
+    allItems.forEach((item) => item.classList.remove("faded", "hidden-photos"));
+    showMoreOverlay.style.display = "none";
+    hideBtnContainer.style.display = "block";
+  });
 
+  // Клик "Скрыть"
+  hideBtn.addEventListener("click", () => {
     applyInitialState();
+    document
+      .getElementById("portfolio")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  // 🔧 ИСПРАВЛЕНИЕ: При смене фильтра ВСЕГДА сбрасываем состояние
+  document.querySelectorAll(".filter-buttons button").forEach((filterBtn) => {
+    filterBtn.addEventListener("click", () => {
+      // Сразу сбрасываем всё
+      allItems.forEach((item) => {
+        item.classList.remove("faded", "hidden-photos");
+      });
+      hideBtnContainer.style.display = "none";
+
+      // Даём фильтру отработать, потом применяем начальное состояние
+      setTimeout(applyInitialState, 50);
+    });
+  });
+
+  applyInitialState();
 });
