@@ -1,7 +1,7 @@
 // Словарь переводов
 const translations = {
   ru: {
-    hero_title: "Сохраню ваши яркие воспоминания",
+    hero_title: "Ваши воспоминания моими глазами",
     hero_subtitle: "Свадьбы • Крещение • Мероприятия • Семейные • Фотосессии",
     cta_btn: "Смотреть работы",
     portfolio_title: "Портфолио",
@@ -15,7 +15,7 @@ const translations = {
     contact_title: "Связаться со мной",
   },
   am: {
-    hero_title: "Ես կպահեմ Ձեր վառ հիշողությունները",
+    hero_title: "Ձեր հիշողությունները իմ աչքերով",
     hero_subtitle:
       "Հարսանիքներ • Մկրտություն • Միջոցառումներ • նտանեկան • ֆոտոսեսիաներ",
     cta_btn: "Դիտել աշխատանքները",
@@ -25,9 +25,9 @@ const translations = {
     filter_wedding: "Հարսանիքներ",
     filter_baptism: "Մկրտություն",
     filter_events: "Միջոցառումներ",
-    filter_family: "Ընտանեկան",
+    filter_family: "նտանեկան",
     filter_photoshoots: "ֆոտոսեսիաներ",
-    contact_title: "Կապվել ին հետ",
+    contact_title: "Կոնտակտային տվյալններ",
   },
 };
 
